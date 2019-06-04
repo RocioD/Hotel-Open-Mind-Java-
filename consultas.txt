@@ -1,0 +1,35 @@
+select C.codigo_producto, P.nombre_producto, sum(cantidad_pedida) as S 
+from consumo C, productos P where C.codigo_producto = 
+P.codigo_producto group by codigo_producto order by S 
+ desc limit 1 
+
+
+select codigo_producto,  sum(cantidad_pedida) as S 
+from consumo group by codigo_producto order by S 
+ desc limit 1
+
+
+select I.habitacion, C.codigo_producto, 
+ sum(cantidad_pedida) as S 
+from ingresos I, consumo C where I.numero_orden = 
+C.numero_orden group by habitacion order by S 
+ asc limit 1
+
+
+select I.habitacion, C.codigo_producto, 
+ sum(cantidad_pedida) as S 
+from ingresos I, consumo C where codigo_producto = 1
+ and I.numero_orden = 
+C.numero_orden group by habitacion order by S 
+ asc 
+
+
+select I.habitacion, C.codigo_producto, 
+ sum(cantidad_pedida) as S 
+from ingresos I, consumo C where codigo_producto = 1
+ and I.numero_orden = 
+C.numero_orden group by habitacion order by S 
+ desc 
+
+
+ update productos set cantidad_inventario= 87 where codigo_producto = 2 
