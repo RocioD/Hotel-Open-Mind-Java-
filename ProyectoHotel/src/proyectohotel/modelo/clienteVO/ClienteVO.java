@@ -1,7 +1,7 @@
-
 package proyectohotel.modelo.clienteVO;
 
 public class ClienteVO {
+
     private String rut;
     private String nombres;
     private String apellido_paterno;
@@ -83,16 +83,13 @@ public class ClienteVO {
     public String toString() {
         return "'" + rut + "', '" + nombres + "', '" + apellido_paterno + "', '" + apellido_materno + "', '" + sexo + "', '" + fecha_nacimiento + "', '" + nacionalidad + "'";
     }
-    
+
     public String toStringModificaciones() {
         return "ClienteVO{" + "rut=" + rut + ", nombres=" + nombres + ", apellido_paterno=" + apellido_paterno + ", apellido_materno=" + apellido_materno + ", sexo=" + sexo + ", fecha_nacimiento=" + fecha_nacimiento + ", nacionalidad=" + nacionalidad + '}';
     }
-    
+
     public String toStringInforme() {
-        return "Rut: " + rut + "\nNombres: " + nombres + "\nApellido paterno: " + apellido_paterno + "\nApellido materno: " 
+        return "Rut: " + rut + "\nNombres: " + nombres + "\nApellido paterno: " + apellido_paterno + "\nApellido materno: "
                 + apellido_materno + "\nSexo: " + sexo + "\nFecha de nacimiento: " + fecha_nacimiento + "\nNacionalidad: " + nacionalidad + "\n";
     }
-
-    
-    
 }

@@ -1,7 +1,7 @@
-
 package proyectohotel.modelo.ingreso;
 
 public class IngresoVO {
+
     private int numero_orden;
     private String habitacion;
     private int cantidad_personas;
@@ -32,8 +32,6 @@ public class IngresoVO {
         this.modalidad = modalidad;
         this.fecha_hora_ingreso = fecha_hora_ingreso;
     }
-    
-    
 
     public int getNumero_orden() {
         return numero_orden;
@@ -82,9 +80,9 @@ public class IngresoVO {
     public void setFecha_hora_ingreso(String fecha_hora_ingreso) {
         this.fecha_hora_ingreso = fecha_hora_ingreso;
     }
-    
+
     public String toString() {
-        return "'" + habitacion + "', " + cantidad_personas + ", " + modalidad + ", " 
+        return "'" + habitacion + "', " + cantidad_personas + ", " + modalidad + ", "
                 + costo_habitacion + ", '" + fecha_hora_ingreso + "'";
     }
 }

@@ -1,4 +1,3 @@
-
 package proyectohotel.vista;
 
 import java.awt.Color;
@@ -29,10 +28,10 @@ import javax.swing.text.JTextComponent;
 import proyectohotel.controlador.Controlador;
 import proyectohotel.modelo.clienteVO.ClienteVO;
 import proyectohotel.modelo.ingreso.IngresoVO;
-import proyectohotel.vista.opciones.Habitaciones;
 import sun.java2d.loops.DrawLine;
 
-public class VentanaIngresoClientes implements ActionListener{
+public class VentanaIngresoClientes implements ActionListener {
+
     private Controlador controlador;
     private IngresoVO ingreso;
     private JFrame ventana;
@@ -74,7 +73,6 @@ public class VentanaIngresoClientes implements ActionListener{
     private JButton botonIngresar;
     private JButton botonCalcular;
     private JTextField rut;
-    private JTextField clienteAmor;//parece q no lo usaremos
     private JTextField nombres;
     private JTextField apellido_paterno;
     private JTextField apellido_materno;
@@ -100,25 +98,25 @@ public class VentanaIngresoClientes implements ActionListener{
     private boolean calculo;
     private int costoTotal;
     private int costoRelativo;
-    
+
     public VentanaIngresoClientes() {
         controlador = new Controlador();
         init();
         initComponentes();
         ventana.setVisible(true);
     }
-    
+
     private void init() {
         ventana = new JFrame("Ingreso");
         ventana.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         ventana.setBounds(150, 20, 800, 700);
         ventana.setResizable(false);
     }
-    
+
     private void initComponentes() {
         JPanel panel = new JPanel(null);
-        panel.setBackground(new Color(230,150,220));
-        
+        panel.setBackground(new Color(230, 150, 220));
+
         titulo = new JLabel("Ingreso Clientes");
         titulo.setFont(new Font("Arial", Font.BOLD, 18));
         textoRut = new JLabel("Rut:");
@@ -195,7 +193,6 @@ public class VentanaIngresoClientes implements ActionListener{
         botonCalcular.addActionListener(this);
         rut = new JTextField(10);
         letra(rut);
-        clienteAmor = new JTextField(10);//parece q no lo usaremos
         nombres = new JTextField(10);
         letra(nombres);
         apellido_paterno = new JTextField(10);
@@ -227,33 +224,33 @@ public class VentanaIngresoClientes implements ActionListener{
         separacion = new JSeparator(SwingConstants.HORIZONTAL);
         separacion2 = new JSeparator(SwingConstants.HORIZONTAL);
         clientesIngresados = new TextArea();
-        clientesIngresados.setFont(new Font("Arial",Font.LAYOUT_LEFT_TO_RIGHT, 16));
-        ruts ="";
+        clientesIngresados.setFont(new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 16));
+        ruts = "";
         numeroDeClientes = 0;
         calculo = false;
         costoTotal = 0;
         costoRelativo = 0;
-        
-        mHabitaciones= new JComboBox(controlador.listaHabitacionesDisponibles());
-        /*
-        mHabitaciones.addItem("Habitación lunar");
-        mHabitaciones.addItem("Parque de diversiones");
-        mHabitaciones.addItem("Túnel subterráneo");
-        mHabitaciones.addItem("LoveChair");
-        mHabitaciones.addItem("Cassandra");
-        mHabitaciones.addItem("Vaquero");
-        mHabitaciones.addItem("Egipcia");
-        mHabitaciones.addItem("Kamasutra");
-        mHabitaciones.addItem("Disco");
-        mHabitaciones.addItem("La China");
-        */
+
+        mHabitaciones = new JComboBox(controlador.listaHabitacionesDisponibles());
+        /* lista de habitaciones
+        "Habitación lunar"
+        "Parque de diversiones"
+        "Túnel subterráneo"
+        "LoveChair"
+        "Cassandra"
+        "Vaquero"
+        "Egipcia"
+        "Kamasutra"
+        "Disco"
+        "La China"
+         */
         ButtonGroup grupo = new ButtonGroup();
         grupo.add(m1);
         grupo.add(m2);
-    
+
         panel.add(titulo);
         titulo.setBounds(300, 20, 200, 30);
-   
+
         panel.add(textoRut);
         textoRut.setBounds(20, 80, 150, 25);
         panel.add(rut);
@@ -264,10 +261,10 @@ public class VentanaIngresoClientes implements ActionListener{
         botonBuscar.setBounds(350, 80, 90, 25);
         panel.add(textoClienteAmor);
         textoClienteAmor.setBounds(150, 110, 340, 25);
-        
+
         panel.add(separacion);
         separacion.setBounds(0, 140, 790, 1);
-    
+
         panel.add(textoNombres);
         textoNombres.setBounds(20, 150, 150, 25);
         panel.add(nombres);
@@ -308,10 +305,10 @@ public class VentanaIngresoClientes implements ActionListener{
         verificacion7.setBounds(370, 300, 250, 25);
         panel.add(botonAgregar);
         botonAgregar.setBounds(400, 330, 100, 25);
-        
+
         panel.add(separacion2);
         separacion2.setBounds(0, 360, 790, 1);
-        
+
         panel.add(textoHabitacion);
         textoHabitacion.setBounds(20, 370, 160, 25);
         panel.add(mHabitaciones);
@@ -358,7 +355,7 @@ public class VentanaIngresoClientes implements ActionListener{
         fecha3.setBounds(260, 520, 30, 25);
         panel.add(verificacion11);
         verificacion11.setBounds(300, 520, 250, 25);
- 
+
         panel.add(textoValorPersona);
         textoValorPersona.setBounds(450, 490, 150, 25);
         panel.add(valorPersona);
@@ -367,23 +364,19 @@ public class VentanaIngresoClientes implements ActionListener{
         botonCalcular.setBounds(470, 520, 100, 25);
         panel.add(mensajeClienteAgregado);
         mensajeClienteAgregado.setBounds(500, 330, 200, 25);
-        
-        
+
         panel.add(botonIngresar);
         botonIngresar.setBounds(550, 570, 100, 25);
         panel.add(verificacion12);
         verificacion12.setBounds(530, 600, 250, 25);
-        
-       // panel.add(clienteAmor);//parece q no lo usaremos
-        
-  
-    
-         ventana.add(panel);
+        panel.add(botonIngresar);
+        botonIngresar.setBounds(550, 630, 100, 25);
+        ventana.add(panel);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==botonBuscar) {
+        if (e.getSource() == botonBuscar) {
             textoClienteAmor.setText("");
             verificacion1.setText("");
             mensajeClienteAgregado.setText("");
@@ -398,65 +391,65 @@ public class VentanaIngresoClientes implements ActionListener{
                     nombres.setText(cliente.getNombres());
                     apellido_paterno.setText(cliente.getApellido_paterno());
                     apellido_materno.setText(cliente.getApellido_materno());
-                    sexo.setText(cliente.getSexo()+"");
+                    sexo.setText(cliente.getSexo() + "");
                     fecha_nacimiento.setText(cliente.getFecha_nacimiento());
                     nacionalidad.setText(cliente.getNacionalidad());
-                    
+
                 } else {
                     textoClienteAmor.setText("El cliente no existe, por favor llenar los campos");
                 }
-            }  else {
+            } else {
                 verificacion1.setText("Rut incorrecto ej:12345678-9");
             }
         }
-        
-        if (e.getSource()==botonAgregar) {
-            boolean sePuede=true;
+
+        if (e.getSource() == botonAgregar) {
+            boolean sePuede = true;
             limpiarMensajes();
             if (!calculo) {
                 verificacion8.setText("Calcule valor");
                 sePuede = false;
             }
-            
-            if (cliente==null) {
-                if(nombres.getText().compareTo("")==0) {
-                    sePuede=false;
+
+            if (cliente == null) {
+                if (nombres.getText().compareTo("") == 0) {
+                    sePuede = false;
                     verificacion2.setText("Debe ingresar nombre");
                 }
-                if(apellido_paterno.getText().compareTo("")==0) {
-                    sePuede=false;
+                if (apellido_paterno.getText().compareTo("") == 0) {
+                    sePuede = false;
                     verificacion3.setText("Debe ingresar apellido");
                 }
-                if(apellido_materno.getText().compareTo("")==0) {
-                    sePuede=false;
+                if (apellido_materno.getText().compareTo("") == 0) {
+                    sePuede = false;
                     verificacion4.setText("Debe ingresar apellido");
                 }
-                if(sexo.getText().compareTo("F")!=0 && sexo.getText().compareTo("M")!=0) {
-                    sePuede=false;
+                if (sexo.getText().compareTo("F") != 0 && sexo.getText().compareTo("M") != 0) {
+                    sePuede = false;
                     verificacion5.setText("Debe ingresar F o M");
                 }
-                if(fecha_nacimiento.getText().compareTo("")==0) {
-                    sePuede=false;
+                if (fecha_nacimiento.getText().compareTo("") == 0) {
+                    sePuede = false;
                     verificacion6.setText("Debe ingresar fecha");
                 }
-                if(nacionalidad.getText().compareTo("")==0) {
-                    sePuede=false;
+                if (nacionalidad.getText().compareTo("") == 0) {
+                    sePuede = false;
                     verificacion7.setText("Debe ingresar nacionalidad");
                 }
                 if (sePuede) {
-                    cliente= new ClienteVO(rut.getText(), nombres.getText(), apellido_paterno.getText(), apellido_materno.getText(), sexo.getText().charAt(0), fecha_nacimiento.getText(), nacionalidad.getText());
-                    if (controlador.insertarCliente(cliente)){
-                        ruts = ruts + rut.getText() +"\n";
+                    cliente = new ClienteVO(rut.getText(), nombres.getText(), apellido_paterno.getText(), apellido_materno.getText(), sexo.getText().charAt(0), fecha_nacimiento.getText(), nacionalidad.getText());
+                    if (controlador.insertarCliente(cliente)) {
+                        ruts = ruts + rut.getText() + "\n";
                         costoTotal = costoTotal + costoRelativo;
                         clientesIngresados.setText(ruts);
                         mensajeClienteAgregado.setText("Cliente agregado");
                         rut.setText("");
-                        cliente=null;
+                        cliente = null;
                     } else {
                         mensajeClienteAgregado.setText("No se pudo agregar");
                     }
                 }
-                
+
             } else {
                 if (calculo) {
                     ruts = ruts + rut.getText() + "\n";
@@ -469,66 +462,66 @@ public class VentanaIngresoClientes implements ActionListener{
                 }
             }
         }
-        
-        if (e.getSource()==botonCalcular) {
+
+        if (e.getSource() == botonCalcular) {
             verificacion8.setText("");
             verificacion9.setText("");
             if (!m1.isSelected() && !m2.isSelected()) {
                 verificacion9.setText("Seleccione modalidad");
             }
-            if (totalClientes.getText().compareTo("")==0) {
+            if (totalClientes.getText().compareTo("") == 0) {
                 verificacion8.setText("Ingrese cantidad de clientes");
             } else {
                 if (!controlador.verificarCantidadClientes(totalClientes.getText())) {
                     verificacion8.setText("Ingrese cantidad válida");
                 } else {
-                    try { 
+                    try {
                         numeroDeClientes = Integer.parseInt(totalClientes.getText());
-                    }catch (NumberFormatException nf) {                    
+                    } catch (NumberFormatException nf) {
                     }
-                    if (numeroDeClientes>0 && numeroDeClientes<20) {
+                    if (numeroDeClientes > 0 && numeroDeClientes < 20) {
                         if (m1.isSelected()) {
                             calculo = true;
                             if (controlador.esClienteAmor(rut.getText()) && controlador.premio()) {
                                 valorPersona.setText("0");
                                 costoRelativo = 0;
                             } else {
-                                costoRelativo = controlador.valorPorPersona(numeroDeClientes, 1 ,(String)mHabitaciones.getSelectedItem());
+                                costoRelativo = controlador.valorPorPersona(numeroDeClientes, 1, (String) mHabitaciones.getSelectedItem());
                                 valorPersona.setText("" + costoRelativo);
                             }
                         }
-                            
-                        if(m2.isSelected()) {
+
+                        if (m2.isSelected()) {
                             calculo = true;
                             if (controlador.esClienteAmor(rut.getText()) && controlador.premio()) {
                                 valorPersona.setText("0");
                                 costoRelativo = 0;
                             } else {
-                                costoRelativo = controlador.valorPorPersona(numeroDeClientes, 2 ,(String)mHabitaciones.getSelectedItem());
-                                valorPersona.setText("" + costoRelativo);   
+                                costoRelativo = controlador.valorPorPersona(numeroDeClientes, 2, (String) mHabitaciones.getSelectedItem());
+                                valorPersona.setText("" + costoRelativo);
                             }
                         }
                     }
                 }
             }
         }
-        
-        if (e.getSource()== botonIngresar) {
+
+        if (e.getSource() == botonIngresar) {
             limpiarMensajes();
             boolean sePuede = true;
             String[] n = ruts.split("\n");
             if (!controlador.verificarCantidadClientes(totalClientes.getText())) {
                 sePuede = false;
             } else {
-                try { 
-                        numeroDeClientes = Integer.parseInt(totalClientes.getText());
-                        if (numeroDeClientes != n.length) {
-                            verificacion12.setText("No coincide cantidad con clientes");
-                            sePuede = false;
-                        }
-                    }catch (NumberFormatException nf) {   
+                try {
+                    numeroDeClientes = Integer.parseInt(totalClientes.getText());
+                    if (numeroDeClientes != n.length) {
+                        verificacion12.setText("No coincide cantidad con clientes");
                         sePuede = false;
                     }
+                } catch (NumberFormatException nf) {
+                    sePuede = false;
+                }
             }
             if (!controlador.verificarHora(hora1.getText(), hora2.getText())) {
                 verificacion10.setText("Hora incorrecta");
@@ -538,7 +531,7 @@ public class VentanaIngresoClientes implements ActionListener{
                 verificacion11.setText("Fecha incorrecta");
                 sePuede = false;
             }
-            if (ruts.compareTo("")!=0) {
+            if (ruts.compareTo("") != 0) {
                 if (sePuede) {
                     int modalidad = 0;
                     if (m1.isSelected()) {
@@ -548,31 +541,31 @@ public class VentanaIngresoClientes implements ActionListener{
                         modalidad = 2;
                     }
                     String fecha_hora_ingreso = hora1.getText() + ":" + hora2.getText() + " " + fecha1.getText() + "/" + fecha2.getText() + "/" + fecha3.getText();
-                    ingreso = new IngresoVO((String)mHabitaciones.getSelectedItem(), numeroDeClientes, modalidad, costoTotal, fecha_hora_ingreso);
+                    ingreso = new IngresoVO((String) mHabitaciones.getSelectedItem(), numeroDeClientes, modalidad, costoTotal, fecha_hora_ingreso);
                     if (controlador.generarIngresoEHistorio(ingreso, ruts)) {
                         limpiarMensajes();
                         limpiarCampos();
                         verificacion12.setText("Ingreso realizado con éxito");
-                        controlador.ocuparHabitacion((String)mHabitaciones.getSelectedItem());
+                        controlador.ocuparHabitacion((String) mHabitaciones.getSelectedItem());
+                        actualizarHabitaciones();
+                        ruts = "";
+                        clientesIngresados.setText("");
                     } else {
                         verificacion12.setText("Ingreso no realizado");
                     }
                 }
             }
-            
         }
-        
-      
     }
-    
+
     private void letra(JTextField o) {
-        o.setFont(new Font("Arial",Font.LAYOUT_LEFT_TO_RIGHT, 16));
+        o.setFont(new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 16));
     }
-    
+
     private void letra(JLabel o) {
-        o.setFont(new Font("Arial",Font.LAYOUT_LEFT_TO_RIGHT, 16));
+        o.setFont(new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 16));
     }
-    
+
     private void limpiarMensajes() {
         verificacion1.setText("");
         verificacion2.setText("");
@@ -588,8 +581,8 @@ public class VentanaIngresoClientes implements ActionListener{
         verificacion12.setText("");
         mensajeClienteAgregado.setText("");
         textoClienteAmor.setText("");
-        
     }
+
     private void limpiarCampos() {
         rut.setText("");
         nombres.setText("");
@@ -598,15 +591,15 @@ public class VentanaIngresoClientes implements ActionListener{
         sexo.setText("");
         fecha_nacimiento.setText("");
         nacionalidad.setText("");
-        calculo=false;
+        calculo = false;
         valorPersona.setText("");
     }
-    
+
     public void setVisible() {
         ventana.setVisible(true);
         limpiarCampos();
         limpiarMensajes();
-        mHabitaciones= new JComboBox(controlador.listaHabitacionesDisponibles());
+        actualizarHabitaciones();
         costoTotal = 0;
         ruts = "";
         totalClientes.setText("");
@@ -618,5 +611,12 @@ public class VentanaIngresoClientes implements ActionListener{
         clientesIngresados.setText("");
         cliente = null;
     }
-    
+
+    public void actualizarHabitaciones() {
+        mHabitaciones.removeAllItems();
+        String[] listaHab = controlador.listaHabitacionesDisponibles();
+        for (int i = 0; i < listaHab.length; i++) {
+            mHabitaciones.addItem(listaHab[i]);
+        }
+    }
 }

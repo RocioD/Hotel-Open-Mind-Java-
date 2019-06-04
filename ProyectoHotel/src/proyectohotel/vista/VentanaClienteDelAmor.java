@@ -1,4 +1,3 @@
-
 package proyectohotel.vista;
 
 import java.awt.Color;
@@ -16,10 +15,10 @@ import javax.swing.WindowConstants;
 import proyectohotel.controlador.Controlador;
 import proyectohotel.modelo.clienteVO.ClienteVO;
 
+public class VentanaClienteDelAmor implements ActionListener {
 
-public class VentanaClienteDelAmor implements ActionListener{
     private Controlador controlador;
-    private ClienteVO[] clientesAmor; 
+    private ClienteVO[] clientesAmor;
     private JFrame ventanaclienteamor;
     private JLabel titulo;
     private JLabel textoRut;
@@ -39,27 +38,27 @@ public class VentanaClienteDelAmor implements ActionListener{
     private JTextField nacionalidad;
     private JTextField nvisitas;
     private JTextField hfavorita;
-    
+
     private JButton mostrar;
-    
-     public VentanaClienteDelAmor() {
+
+    public VentanaClienteDelAmor() {
         controlador = new Controlador();
         init();
         initComponentes();
         ventanaclienteamor.setVisible(true);
     }
-     
-      private void init() {
+
+    private void init() {
         ventanaclienteamor = new JFrame("Cliente del Amor");
         ventanaclienteamor.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         ventanaclienteamor.setBounds(150, 20, 800, 700);
         ventanaclienteamor.setResizable(false);
     }
-      
-      private void initComponentes() {
+
+    private void initComponentes() {
         JPanel panel = new JPanel(null);
-        panel.setBackground(new Color(230,150,220));
-        
+        panel.setBackground(new Color(230, 150, 220));
+
         titulo = new JLabel("Cliente del Amor");
         titulo.setFont(new Font("Arial", Font.BOLD, 18));
         textoRut = new JLabel("Rut:");
@@ -72,21 +71,17 @@ public class VentanaClienteDelAmor implements ActionListener{
         letra(textofechanacimiento);
         textonacionalidad = new JLabel("Nacionalidad:");
         letra(textonacionalidad);
-        textonvisitas = new JLabel ("Numero de visitas:");
+        textonvisitas = new JLabel("Numero de visitas:");
         letra(textonvisitas);
-        textohfavorita =new JLabel ("Habitación Favorita");
+        textohfavorita = new JLabel("Habitación Favorita");
         letra(textohfavorita);
-        textoregistros = new JLabel ("Registros");
+        textoregistros = new JLabel("Registros");
         letra(textoregistros);
         mostrar = new JButton("Mostrar");
         mostrar.addActionListener(this);
-        
-        clientesAmor = controlador.clientesAmor();
-        String [] ruts = new String[clientesAmor.length];
-        for (int i=0; i<clientesAmor.length; i++) {
-            ruts[i] = clientesAmor[i].getRut();
-        }
-        rut = new JComboBox(ruts);
+
+        rut = new JComboBox();
+        actualizarRut();
 
         nombre = new JTextField(10);
         letra(nombre);
@@ -100,14 +95,12 @@ public class VentanaClienteDelAmor implements ActionListener{
         letra(nvisitas);
         hfavorita = new JTextField(10);
         letra(hfavorita);
-        registro =new JTextArea();
-        registro.setFont(new Font("Arial",Font.LAYOUT_LEFT_TO_RIGHT, 16));
-      
+        registro = new JTextArea();
+        registro.setFont(new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 16));
 
-        
         panel.add(titulo);
         titulo.setBounds(300, 20, 200, 30);
-   
+
         panel.add(textoRut);
         textoRut.setBounds(20, 80, 150, 25);
         panel.add(rut);
@@ -141,41 +134,52 @@ public class VentanaClienteDelAmor implements ActionListener{
         panel.add(textoregistros);
         textoregistros.setBounds(20, 330, 150, 25);
         panel.add(registro);
-        registro.setBounds(20, 360, 700, 200);
+        registro.setBounds(20, 360, 740, 200);
         ventanaclienteamor.add(panel);
-      }
-
-
-
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       if (e.getSource() == mostrar) {
-           String unRut = (String)rut.getSelectedItem();
-           ClienteVO cliente = controlador.cliente(unRut);
-           nombre.setText(cliente.getNombres() + " " + cliente.getApellido_paterno() + " " + cliente.getApellido_materno());
-           sexo.setText(cliente.getSexo()+"");
-           fechanacimiento.setText(cliente.getFecha_nacimiento());
-           nacionalidad.setText(cliente.getNacionalidad());
-           nvisitas.setText("" + controlador.numeroVisitasTolal(unRut));
-           hfavorita.setText(controlador.habitacionFavorita(unRut));
-           registro.setText(controlador.registros(unRut));
-           
-       }
+        if (e.getSource() == mostrar) {
+            String unRut = (String) rut.getSelectedItem();
+            ClienteVO cliente = controlador.cliente(unRut);
+            nombre.setText(cliente.getNombres() + " " + cliente.getApellido_paterno() + " " + cliente.getApellido_materno());
+            sexo.setText(cliente.getSexo() + "");
+            fechanacimiento.setText(cliente.getFecha_nacimiento());
+            nacionalidad.setText(cliente.getNacionalidad());
+            nvisitas.setText("" + controlador.numeroVisitasTolal(unRut));
+            hfavorita.setText(controlador.habitacionFavorita(unRut));
+            registro.setText(controlador.registros(unRut));
+        }
     }
 
     private void letra(JLabel o) {
-        o.setFont(new Font("Arial",Font.LAYOUT_LEFT_TO_RIGHT, 16));
+        o.setFont(new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 16));
     }
 
     private void letra(JTextField o) {
-       o.setFont(new Font("Arial",Font.LAYOUT_LEFT_TO_RIGHT, 16));
+        o.setFont(new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 16));
     }
-     
+
     public void setVisible() {
         ventanaclienteamor.setVisible(true);
+        actualizarRut();
+        fechanacimiento.setText("");
+        nombre.setText("");
+        sexo.setText("");
+        nacionalidad.setText("");
+        nvisitas.setText("");
+        hfavorita.setText("");
+        registro.setText("");
     }
-    
-   
-    
+
+    public void actualizarRut() {
+        rut.removeAllItems();
+        clientesAmor = controlador.clientesAmor();
+        String[] ruts = new String[clientesAmor.length];
+        for (int i = 0; i < clientesAmor.length; i++) {
+            ruts[i] = clientesAmor[i].getRut();
+            rut.addItem(ruts[i]);
+        }
+    }
 }

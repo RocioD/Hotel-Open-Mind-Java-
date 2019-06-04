@@ -1,12 +1,11 @@
-
 package proyectohotel.modelo.ingreso;
 
 public class productosVO {
-  
- private Integer Codigo_Producto;
- private Integer Valor_Unitario;
- private String Nombre_Producto;
- private Integer  Cantidad_Inventario;
+
+    private Integer Codigo_Producto;
+    private Integer Valor_Unitario;
+    private String Nombre_Producto;
+    private Integer Cantidad_Inventario;
 
     public Integer getCodigo_Producto() {
         return Codigo_Producto;
@@ -39,9 +38,4 @@ public class productosVO {
     public void setCantidad_Inventario(Integer Cantidad_Inventario) {
         this.Cantidad_Inventario = Cantidad_Inventario;
     }
-
-
-
-   
-    
 }

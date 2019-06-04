@@ -1,7 +1,7 @@
-
 package proyectohotel.modelo.consumoVO;
 
 public class ConsumoVO {
+
     private int codigo_producto;
     private int cantidad_pedida;
     private int numero_orden;
@@ -38,8 +38,6 @@ public class ConsumoVO {
 
     @Override
     public String toString() {
-        return  codigo_producto + ", " + cantidad_pedida + ", " + numero_orden;
+        return codigo_producto + ", " + cantidad_pedida + ", " + numero_orden;
     }
-    
-    
 }
